@@ -10,7 +10,7 @@ export default {
   input: 'example/index.js',
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('development'),
@@ -28,14 +28,13 @@ export default {
       verbose: true,
       historyApiFallback: false,
       host: 'localhost',
-      port: 3002
+      port: 3002,
     }),
-    livereload('dist')
+    livereload('dist'),
   ],
   output: {
     file: 'dist/build.js',
     format: 'iife',
-    sourcemap: true
+    sourcemap: true,
   },
 }
-

@@ -11,9 +11,10 @@ import simplevars from 'postcss-simple-vars'
 import nested from 'postcss-nested'
 import cssnext from 'postcss-cssnext'
 import cssnano from 'cssnano'
+
 const pkg = require('./package.json')
 
-const fistLetterUpper = function (str) {
+const fistLetterUpper = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
@@ -23,7 +24,7 @@ export default {
   external: ['react', 'react-dom', 'prop-types'],
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -33,9 +34,9 @@ export default {
       plugins: [
         simplevars(),
         nested(),
-        cssnext({warnForDuplicates: false, }),
-        cssnano()
-      ]
+        cssnext({ warnForDuplicates: false }),
+        cssnano(),
+      ],
     }),
     resolve(),
     commonjs({
@@ -51,22 +52,20 @@ export default {
       name: fistLetterUpper(pkg.name),
       globals: {
         react: 'React',
-        "react-dom": "ReactDOM",
-        "prop-types": "PropTypes",
+        'react-dom': 'ReactDOM',
+        'prop-types': 'PropTypes',
       },
-      sourcemap: true
+      sourcemap: true,
     }, {
       file: './es/hello.es.js',
       format: 'es',
       globals: {
         react: 'React',
-        "react-dom": "ReactDOM",
-        "prop-types": "PropTypes",
+        'react-dom': 'ReactDOM',
+        'prop-types': 'PropTypes',
       },
       banner: '// welcome to here',
-      footer: '// powered by love'
-    }
+      footer: '// powered by love',
+    },
   ],
-  external: ['react', 'react-dom'],
 }
-
